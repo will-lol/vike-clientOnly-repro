@@ -19,8 +19,11 @@ export default function Page() {
         fallback={<AnimatedLoader />}
       ></HeavyComponentClientOnly>
       <h2>
-        Example 2: Tanstack Router ClientOnly component. No suspense or lazy is
-        required.
+        Example 2:{" "}
+        <a href="https://github.com/TanStack/router/blob/main/packages/react-router/src/ClientOnly.tsx">
+          Tanstack Router ClientOnly component
+        </a>
+        . No suspense or lazy is required.
       </h2>
       <ClientOnlyTanstack fallback={<AnimatedLoader />}>
         <HeavyComponent />
