@@ -5,11 +5,11 @@ import HeavyComponent from "../../components/HeavyComponent";
 import { lazy, ReactNode, Suspense, use, useState } from "react";
 
 const HeavyComponentClientOnly = clientOnly(
-  () => import("../../components/HeavyComponent"),
+  () => import("../../components/HeavyComponentClientOnly"),
 );
 
 const HeavyComponentLazy = lazy(
-  () => import("../../components/HeavyComponent"),
+  () => import("../../components/HeavyComponentLazy"),
 );
 
 export default function Page() {
