@@ -9,6 +9,7 @@ export default {
   // https://vike.dev/head-tags
   title: "My Vike App",
   description: "Demo showcasing Vike",
+  ssr: true,
 
   extends: [vikeReact, vikePhoton],
 } satisfies Config;

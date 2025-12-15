@@ -2,9 +2,13 @@ import { clientOnly } from "vike-react/clientOnly";
 import AnimatedLoader from "../../components/AnimatedLoader";
 import { ClientOnly as ClientOnlyTanstack } from "../../components/ClientOnlyTanstack";
 import HeavyComponent from "../../components/HeavyComponent";
-import { ReactNode, Suspense, use, useState } from "react";
+import { lazy, ReactNode, Suspense, use, useState } from "react";
 
 const HeavyComponentClientOnly = clientOnly(
+  () => import("../../components/HeavyComponent"),
+);
+
+const HeavyComponentLazy = lazy(
   () => import("../../components/HeavyComponent"),
 );
 
@@ -52,6 +56,10 @@ export default function Page() {
       <ClientOnlyDemo stage={stage} fallback={<AnimatedLoader />}>
         <HeavyComponent />
       </ClientOnlyDemo>
+      <h2>Example 4: React lazy with Suspense</h2>
+      <Suspense>
+        <HeavyComponentLazy />
+      </Suspense>
     </main>
   );
 }
