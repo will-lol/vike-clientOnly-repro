@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function HeavyComponent() {
+export default function HeavyComponentClientOnly() {
   useEffect(() => {
     console.log("Hello world client only");
   });
