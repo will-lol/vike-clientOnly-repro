@@ -60,6 +60,13 @@ export default function Page() {
       <Suspense>
         <HeavyComponentLazy />
       </Suspense>
+      <h2>
+        Example 5: clientOnly, loading component using effect rather than
+        Suspense
+      </h2>
+      <HeavyComponentSolution fallback={<AnimatedLoader />} />
+      <h2>Example 6: clientOnlySimple</h2>
+      <HeavyComponentClientOnlySimple fallback={<AnimatedLoader />} />
     </main>
   );
 }
