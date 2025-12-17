@@ -2,7 +2,20 @@ import { clientOnly } from "vike-react/clientOnly";
 import AnimatedLoader from "../../components/AnimatedLoader";
 import { ClientOnly as ClientOnlyTanstack } from "../../components/ClientOnlyTanstack";
 import HeavyComponent from "../../components/HeavyComponent";
-import { lazy, ReactNode, Suspense, use, useState } from "react";
+import HeavyComponentSimple from "../../components/HeavyComponentSimple";
+import {
+  lazy,
+  ReactNode,
+  Suspense,
+  use,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { clientOnly as clientOnlySolution } from "../../lib/clientOnly";
+import { clientOnlySimple } from "../../lib/clientOnlySimple";
+
+const HeavyComponentClientOnlySimple = clientOnlySimple(HeavyComponentSimple);
 
 const HeavyComponentClientOnly = clientOnly(
   () => import("../../components/HeavyComponentClientOnly"),
@@ -10,6 +23,10 @@ const HeavyComponentClientOnly = clientOnly(
 
 const HeavyComponentLazy = lazy(
   () => import("../../components/HeavyComponentLazy"),
+);
+
+const HeavyComponentSolution = clientOnlySolution(
+  () => import("../../components/HeavyComponentSolution"),
 );
 
 export default function Page() {
@@ -41,7 +58,9 @@ export default function Page() {
         id="stage-select"
         value={stage}
         className="border"
-        onChange={(e) => setStage(e.currentTarget.value)}
+        onChange={(e) =>
+          setStage(e.currentTarget.value as ClientOnlyDemoProps["stage"])
+        }
       >
         <option value="server">
           clientOnly component as it was rendered on the server
